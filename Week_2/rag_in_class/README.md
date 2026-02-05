@@ -181,10 +181,55 @@ ollama list
 ---
 
 ## What students are expected to do
-1. Run input tests to see the baseline behavior.
-2. Generate refactored code with `zero_shot_refactor.py`.
-3. Run output tests to validate behavior preservation.
-4. Inspect `dataset/outputs/explanations/` to see what the model claimed it changed and why. Check the errors.
-5. Build rag by running `rag/build_rag_index.py` using outputs on explanations folder only (`dataset/outputs/explanations`).
-6. Chat with the rag model by running `rag/rag_explain_chat.py`
-7. Update the prompt, rerun and observe the output. If it's not satisfied repeat steps 2-6.
+## What students are expected to do
+
+1. **Set up the environment**
+
+* Create and activate a Python virtual environment.
+* Install dependencies (`pip install -r requirements.txt`).
+* Ensure Ollama is running and required models are pulled.
+
+2. **Run the baseline (input) tests**
+
+* Run pytest in `dataset/input/` to confirm the original tasks pass.
+* Record the result (pass, fail, and which tasks fail if any).
+
+3. **Generate refactored solutions**
+
+* Run the refactoring script to generate files in `dataset/outputs/tasks/`.
+* Confirm the script also produces explanation artifacts in `dataset/outputs/explanations/`.
+
+4. **Test the refactored outputs**
+
+* Run pytest in `dataset/outputs/` to check whether refactoring preserved behavior.
+* Save logs for any failures into `dataset/outputs/error_logs/` (`python -m pytest -q 2>&1 | tee explanations/pytest_error_log.txt`).
+
+5. **Build the RAG index (FAISS)**
+
+* Run:
+
+  * `python rag/build_rag_index.py`
+* Confirm it creates `dataset/outputs/rag_faiss_index/`.
+
+6. **Use the RAG chat to diagnose failures**
+
+* Run:
+
+  * `python rag/rag_explain_chat.py`
+* Ask questions grounded in retrieved artifacts, for example:
+
+  * “Why is task_315 failing?”
+  * “What are the common issues that the refactorings are failings?”
+  * “What did the model refactor correctly?”
+
+7. **Update the prompt and rerun**
+
+* Based on RAG findings, update `prompts/user_prompt.md` with a targeted change that addresses the failure mode.
+* Re-run the refactor pipeline and re-run output tests.
+* Repeat until outputs pass or you can justify the remaining failures with evidence from logs, tests, and code.
+
+8. **Submit artifacts**
+
+* The updated `prompts/user_prompt.md`
+* **Make sure your final prompt is generic enough and not specific to certain problems. I will test against 60 more problems and expect at least 90% success rate.**
+* A short reflection describing what the RAG chat retrieved and how it influenced the prompt update
