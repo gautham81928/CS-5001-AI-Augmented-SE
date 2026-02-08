@@ -16,7 +16,6 @@ These are the rules that you must follow:
 - Do not normalize return values (example: False vs None).
 - Refactor by making minimal edits to the existing code.
 - Do not reimplement functions from start, refactor the original functions.
-- Preserve the original control-flow structure.
 - Limit changes to formatting, comments, and non-functional naming.
 
 ## Output Format (strict)
