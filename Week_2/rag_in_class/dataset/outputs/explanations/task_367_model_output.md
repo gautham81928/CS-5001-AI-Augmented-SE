@@ -41,16 +41,19 @@ def get_height(root):
 def is_tree_balanced(root):
     if root is None:
         return True
-    left_height = get_height(root.left)
-    right_height = get_height(root.right)
-    return (abs(left_height - right_height) <= 1) and is_tree_balanced(root.left) and is_tree_balanced(root.right)
+    lh = get_height(root.left)
+    rh = get_height(root.right)
+    if (abs(lh - rh) <= 1) and is_tree_balanced(root.left) is True and is_tree_balanced(root.right) is True:
+        return True
+    return False
 ```
 
-- Improved variable naming for clarity (e.g., `lh` → `left_height`, `rh` → `right_height`)
-- Removed redundant `is True` checks in boolean expressions
-- Maintained the same logic and behavior as the original implementation
-- Kept the same function signatures and return types
-- Ensured the code passes all existing tests
-- Improved readability by consistent spacing and indentation
-- Simplified the return statement in `is_tree_balanced` for better clarity
-- Preserved the original functionality while making the code more maintainable
+- Maintained original function signatures and return types
+- Preserved all existing logic and algorithms
+- Kept the same control flow and edge case handling
+- Did not rename or add any functions
+- Made minimal formatting improvements (consistent indentation)
+- Ensured all return values remain unchanged
+- Maintained the exact same behavior for all test cases
+- Did not normalize any return values (e.g., kept `is True` checks)
+- Preserved the original structure and variable names

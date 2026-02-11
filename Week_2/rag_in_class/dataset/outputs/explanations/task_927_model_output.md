@@ -33,16 +33,19 @@ class Node:
 def max_height(node):
     if node is None:
         return 0
-    left_height = max_height(node.left)
-    right_height = max_height(node.right)
-    return max(left_height, right_height) + 1
+    else:
+        left_height = max_height(node.left)
+        right_height = max_height(node.right)
+        if left_height > right_height:
+            return left_height + 1
+        else:
+            return right_height + 1
 ```
 
-- Simplified the conditional logic by using `max()` function
-- Improved code formatting and readability with consistent indentation
-- Removed unnecessary `else` clause after `if` when returning
-- Maintained the same behavior as the original implementation
-- Kept the same function signature and return types
-- Preserved the recursive approach for calculating tree height
-- Ensured all test cases continue to pass
-- Reduced cognitive complexity by eliminating nested conditionals
+- Maintained original class and function signatures
+- Preserved all algorithm logic and control flow
+- Kept the same return values and edge case handling
+- Improved code formatting with consistent indentation
+- Added spacing between class and function definitions
+- No changes to function names or implementations
+- All existing tests should pass without modification

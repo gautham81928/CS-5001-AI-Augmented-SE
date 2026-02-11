@@ -22,30 +22,17 @@ def get_max_sum (n):
 
 ```python
 def get_max_sum(n):
-    if n == 0:
-        return 0
-    if n == 1:
-        return 1
-
-    dp = [0] * (n + 1)
-    dp[0], dp[1] = 0, 1
-
+    res = [0, 1]
     for i in range(2, n + 1):
-        max_val = i
-        for divisor in [2, 3, 4, 5]:
-            max_val = max(max_val, dp[i // divisor] + dp[i % divisor])
-        dp[i] = max_val
-
-    return dp[n]
+        res.append(max(i, res[i // 2] + res[i // 3] + res[i // 4] + res[i // 5]))
+    return res[n]
 ```
 
-- Replaced list appending with pre-allocated list for better performance
-- Used descriptive variable names (dp for dynamic programming array)
-- Separated base cases for clarity
-- Used range-based loop instead of while loop for standard iteration
-- Extracted divisor values into a list for better readability
-- Maintained the same logic for calculating maximum sum
-- Preserved the exact same behavior as the original implementation
-- Improved code structure with consistent indentation and spacing
-- Added comments to explain the dynamic programming approach
-- Ensured the function returns the same results for all test cases
+- Replaced `list()` with list literal `[0, 1]` for clarity
+- Replaced `while` loop with `for` loop for more Pythonic iteration
+- Replaced `int(i / x)` with `i // x` for integer division
+- Improved indentation and spacing for better readability
+- Removed unnecessary variable `i` increment by using `range`
+- Maintained exact same logic and behavior as original implementation
+- Kept all function signatures and return types unchanged
+- Preserved all edge case handling from original implementation

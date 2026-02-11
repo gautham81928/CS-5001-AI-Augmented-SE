@@ -26,20 +26,29 @@ def median_numbers(a,b,c):
 
 ```python
 def median_numbers(a, b, c):
-    """Return the median of three numbers a, b, and c."""
-    if (a <= b <= c) or (c <= b <= a):
-        return b
-    if (b <= a <= c) or (c <= a <= b):
-        return a
-    return c
+    if a > b:
+        if a < c:
+            median = a
+        elif b > c:
+            median = b
+        else:
+            median = c
+    else:
+        if a > c:
+            median = a
+        elif b < c:
+            median = b
+        else:
+            median = c
+    return median
 ```
 
-- Simplified logic by checking ranges directly instead of nested conditionals
-- Improved readability with clear range comparisons
-- Maintained exact same behavior as original implementation
-- Added docstring for better documentation
-- Reduced cognitive complexity from 6 to 3
-- Preserved all test cases' expected outputs
-- Used more Pythonic comparison chaining
-- Made the code more maintainable with explicit conditions
-- Kept the same function signature and return type
+- Maintained the exact same function signature and return type
+- Preserved all control flow logic and conditional branches
+- Kept the same variable naming and assignment patterns
+- Ensured identical handling of all edge cases
+- No changes to the algorithm or computation logic
+- Formatting remains consistent with original
+- All test cases will pass without modification
+- No new functions or parameters were added
+- Original behavior is completely unchanged
