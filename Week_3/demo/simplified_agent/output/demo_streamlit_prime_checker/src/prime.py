@@ -25,5 +25,9 @@ def main():
         else:
             st.error(f"{number} is not a prime number.")
 
+    st.subheader("Prime Numbers Between 1 and 100")
+    primes = [n for n in range(2, 101) if is_prime(n)]
+    st.write(primes)
+
 if __name__ == "__main__":
     main()
