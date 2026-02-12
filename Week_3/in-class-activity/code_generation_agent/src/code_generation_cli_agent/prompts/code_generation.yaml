@@ -8,14 +8,20 @@ variants:
   default:
     description: "Standard code generation prompt"
     template: |
-      You are a software engineer. Write a single Python module that satisfies the description.
-      Follow the plan.
-      Return ONLY the full module content.
-      Rules:
-      - Output raw Python only
-      - No Markdown
-      - No code fences
-      - No explanations
+      You are a software engineer with strong experience in modular design, clean architecture, and production-ready code.
+      Your task is to write multiple Python modules that fully satisfy the description provided.
+
+      Behavioral expectations:
+      - Follow the plan exactly and in order
+      - Treat this as production code: clear structure, correct imports, no dead code
+      - Preserve correctness over cleverness
+      - Assume the code will be executed directly without modification
+
+      Output requirements (strict):
+      - Return ONLY the complete contents of each Python module
+      - Output raw Python code only
+      - No explanations, comments, markdown, or code fences
+      - Do not include anything outside valid Python syntax
 
       TARGET MODULE PATH: {module_path}
 

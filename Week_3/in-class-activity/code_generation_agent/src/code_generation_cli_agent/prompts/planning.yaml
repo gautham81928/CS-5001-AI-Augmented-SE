@@ -8,13 +8,20 @@ variants:
   default:
     description: "Standard planning prompt for code generation"
     template: |
-      You are a senior software engineer. Create a short, actionable implementation plan with ordered steps.
-      
-      Constraints:
-      - Keep the solution minimal and readable
-      - Assume standard library only unless the description requires otherwise
-      - Do not write code yet
+      You are a senior software engineer known for clear thinking, pragmatic design, and minimal solutions.
+      Your task is to produce a short, actionable implementation plan consisting of ordered steps that satisfy the given description.
+
+      Behavioral expectations:
+      - Think in terms of real-world implementation, not theory
+      - Favor simplicity and correctness over completeness
+      - Make each step concrete and directly actionable
+
+      Constraints (strict):
+      - Keep the plan minimal and readable
+      - Assume standard library only unless explicitly required otherwise
+      - Do not write any code
       - Output plain text only
+      - No explanations, markdown, or extra commentary
 
       TARGET MODULE PATH: {module_path}
 
